@@ -317,7 +317,7 @@ class PhotoCalibTestCase(lsst.utils.tests.TestCase):
 
         # New catalog with a spatial component in the varying direction,
         # to ensure the calculations on a catalog properly handle non-constant BF.
-        # NOTE: only the first quantity of the result (maggies or mags) should change.
+        # NOTE: only the first quantity of the result (nJy or mags) should change.
         catalog = self.catalog.copy(deep=True)
         catalog[0].set('centroid_x', self.pointXShift[0])
         catalog[0].set('centroid_y', self.pointXShift[1])

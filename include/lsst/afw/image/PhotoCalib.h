@@ -207,7 +207,7 @@ public:
 
     /**
      * Convert `sourceRecord[instFluxField_instFlux]` (ADU) at location
-     * `(sourceRecord.get("x"), sourceRecord.get("y"))` (pixels) to nJy and maggie error.
+     * `(sourceRecord.get("x"), sourceRecord.get("y"))` (pixels) to nJy and magnitude error.
      *
      * @param[in]  sourceRecord  The source record to get instFlux and position from.
      * @param[in]  instFluxField The instFlux field: Keys of the form "*_instFlux" and "*_instFluxErr" must
@@ -245,7 +245,7 @@ public:
      * exist.
      *                            For example: instFluxField = "PsfFlux" -> "PsfFlux_instFlux",
      * "PsfFlux_instFluxErr"
-     * @param[in]  outField       The field to write the nJy and maggie errors to.
+     * @param[in]  outField       The field to write the nJy and magnitude errors to.
      *                            Keys of the form "*_instFlux" and "*_instFluxErr" must exist in the schema.
      *
      * @warning Not implemented yet: See DM-10155.
@@ -483,8 +483,9 @@ private:
     double computeCalibrationMean(std::shared_ptr<afw::math::BoundedField> calibration) const;
 
     /// Helpers for converting arrays of instFlux
-    void instFluxToMaggiesArray(afw::table::SourceCatalog const &sourceCatalog,
-                                std::string const &instFluxField, ndarray::Array<double, 2, 2> result) const;
+    void instFluxToNanojanskyArray(afw::table::SourceCatalog const &sourceCatalog,
+                                   std::string const &instFluxField,
+                                   ndarray::Array<double, 2, 2> result) const;
     void instFluxToMagnitudeArray(afw::table::SourceCatalog const &sourceCatalog,
                                   std::string const &instFluxField,
                                   ndarray::Array<double, 2, 2> result) const;
